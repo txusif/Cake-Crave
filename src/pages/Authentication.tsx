@@ -1,3 +1,5 @@
+import Login from "@/features/Authentication/Login";
+
 export const Authentication = () => {
-  return <div>Authentication</div>;
+  return <Login />;
 };

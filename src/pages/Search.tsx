@@ -1,3 +1,9 @@
+import SearchInput from "@/features/Search/Search";
+
 export default function Search() {
-  return <div>Search</div>;
+  return (
+    <>
+      <SearchInput />
+    </>
+  );
 }

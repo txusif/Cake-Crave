@@ -1,3 +1,5 @@
+import OrderForm from "@/features/Order/OrderForm";
+
 export default function Order() {
-  return <div>Order</div>;
+  return <OrderForm />;
 }

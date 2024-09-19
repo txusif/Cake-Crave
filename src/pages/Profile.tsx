@@ -1,3 +1,5 @@
+import ProfileSettings from "@/features/Profile/ProfileSettings";
+
 export default function Profile() {
-  return <div>Profile</div>;
+  return <ProfileSettings />;
 }
