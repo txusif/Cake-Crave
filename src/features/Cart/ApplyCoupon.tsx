@@ -2,10 +2,15 @@ import { BiSolidOffer } from "react-icons/bi";
 import Coupon from "./Coupon";
 import { useAppContext } from "@/store/AppContext";
 
-export default function ApplyCoupon() {
-  const { isCoupon, setCoupon } = useAppContext();
+type AppContextType = {
+  isCoupon: boolean;
+  setCoupon: (value: boolean) => void;
+};
 
-  function handleApplyCoupon(e) {
+export default function ApplyCoupon() {
+  const { isCoupon, setCoupon }: AppContextType = useAppContext();
+
+  function handleApplyCoupon(e: React.MouseEvent<HTMLButtonElement>) {
     e.stopPropagation();
     setCoupon(!isCoupon);
   }
@@ -20,7 +25,7 @@ export default function ApplyCoupon() {
         {isCoupon ? "Hide Coupons" : "Show Coupons"}
       </button>
 
-      {isCoupon && <Coupon setCoupon={setCoupon} />}
+      {isCoupon && <Coupon />}
     </div>
   );
 }

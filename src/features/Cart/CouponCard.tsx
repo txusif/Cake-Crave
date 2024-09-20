@@ -3,13 +3,21 @@ import { useApplyCoupon } from "./useApplyCoupon";
 import { useCart } from "./useCart";
 import { useAppContext } from "@/store/AppContext";
 
+type CouponCardProps = {
+  title: string;
+  body: string;
+  calMethod: string;
+  minBillValue: number;
+  couponValue: number;
+};
+
 export default function CouponCard({
   title,
   body,
   calMethod,
   minBillValue,
   couponValue,
-}) {
+}: CouponCardProps) {
   const { applyCoupon, isPending } = useApplyCoupon();
   const { data: cartData } = useCart();
   const { setIsCouponApplicable } = useAppContext();
@@ -20,7 +28,10 @@ export default function CouponCard({
       return acc + cur;
     }, 0);
 
-  function handleApplyCoupon(e, data) {
+  function handleApplyCoupon(
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    data: { couponValue: number; calMethod: string; minBillValue: number },
+  ) {
     e.stopPropagation();
     if (totalCartPrice >= minBillValue) return applyCoupon(data);
     setIsCouponApplicable((ps) => {

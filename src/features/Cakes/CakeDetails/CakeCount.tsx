@@ -1,7 +1,24 @@
+import { CakeType } from "@/services/apiCakes";
 import { useAppContext } from "@/store/AppContext";
 import { IoMdAdd, IoMdRemove } from "react-icons/io";
 
-export default function MealCount({ cartData, item }) {
+export type CartDataType = {
+  created_at: string;
+  id: number;
+  ingredients: string;
+  name: string;
+  price: number;
+  quantity: number;
+  totalPrice: number;
+};
+
+export default function CakeCount({
+  cartData,
+  item,
+}: {
+  cartData: CartDataType[];
+  item: CakeType;
+}) {
   const {
     handleIncrease,
     handleDecrease,
@@ -10,16 +27,16 @@ export default function MealCount({ cartData, item }) {
     handleAddItem,
   } = useAppContext();
 
-  const mealToUpdate = cartData.find((meal) => meal.id === item.id);
+  const cakeToUpdate = cartData.find((cake) => cake.id === item.id);
 
   const {
-    id,
-    name,
-    price,
+    id = 0,
+    name = "",
+    price = 0,
     quantity = 0,
-    ingredients,
-    totalPrice,
-  } = mealToUpdate || [];
+    ingredients = "",
+    totalPrice = 0,
+  } = cakeToUpdate || {};
 
   const updatedMeal = {
     id,
@@ -39,7 +56,8 @@ export default function MealCount({ cartData, item }) {
   }
   function handleIncreaseCount() {
     if (quantity === 0) {
-      const { id, name, price, ingredients, quantity = 1 } = item;
+      const { id, name, price, ingredients } = item;
+      const quantity = 1;
       const newItem = {
         id,
         name,
@@ -57,7 +75,7 @@ export default function MealCount({ cartData, item }) {
   return (
     <div className="flex w-full items-center justify-center rounded-md bg-LightGrey text-xl outline outline-2 outline-Grey">
       <button
-        className={`basis[200px] flex w-full items-center justify-center px-4 text-Grey ${isCartLoading && "cursor-pointer"} ${mealToUpdate === undefined && "cursor-not-allowed"}`}
+        className={`basis[200px] flex w-full items-center justify-center px-4 text-Grey ${isCartLoading && "cursor-pointer"} ${cakeToUpdate === undefined && "cursor-not-allowed"}`}
         disabled={isCartLoading}
         onClick={handleDecreaseCount}
       >

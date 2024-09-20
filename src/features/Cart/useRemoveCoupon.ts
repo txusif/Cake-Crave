@@ -7,7 +7,7 @@ export function useRemoveCoupon() {
   const { mutate: removeCoupon, isPending } = useMutation({
     mutationFn: removeCouponApi,
     onSuccess: () => {
-      queryClient.invalidateQueries('coupon');
+      queryClient.invalidateQueries({ queryKey: ['coupon'] });
     },
     onError: (err) => toast.error(err.message),
   });

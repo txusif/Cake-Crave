@@ -1,8 +1,9 @@
 import { currencyFormatter } from "@/utils/helper";
 import { Navigate } from "react-router-dom";
+import { CartDataType } from "../Cakes/CakeDetails/CakeCount";
 
 type OrderProps = {
-  cartItems: any[];
+  cartItems: CartDataType[];
   isCouponApplied: boolean;
   totalCartPrice: number;
   discountPrice: number;

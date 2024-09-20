@@ -168,11 +168,18 @@ export async function getCoupon() {
     return data;
 }
 
-export async function applyCoupon(coupon) {
+export type CouponType = {
+    calMethod: string
+    couponValue: number
+    minBillValue: number
+}
+
+export async function applyCoupon(coupon: CouponType) {
     const { data, error } = await supabase
         .from("coupon")
         .update({ ...coupon, isCouponApplied: true })
         .eq("id", 1);
+
 
     if (error) {
         throw new Error(error.message);

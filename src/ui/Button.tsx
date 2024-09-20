@@ -10,7 +10,7 @@ export default function Button({
   isPending,
 }: {
   children: React.ReactNode;
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   type: "clear" | "cancle" | "checkout" | "login" | "file" | "remove";
   disabled?: boolean;
   isPending?: boolean;

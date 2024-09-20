@@ -1,6 +1,17 @@
+import { CartDataType } from "@/features/Cakes/CakeDetails/CakeCount";
 import supabase from "./supabase";
 
-export async function newOrder(orderDetails) {
+type OrderDetailsType = {
+    cartDetails: { cartItems: CartDataType[] },
+    address: string,
+    fullName: string,
+    userId: string,
+    phoneNumber: string,
+}
+
+export async function newOrder(orderDetails: OrderDetailsType) {
+    console.log(orderDetails);
+
     const { data, error } = await supabase
         .from('orderDetails')
         .upsert([orderDetails])

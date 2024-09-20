@@ -1,6 +1,6 @@
 import { toast } from 'sonner';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { applyCoupon as applyCouponApi } from "@/services/apiCakes"
+import { applyCoupon as applyCouponApi, CouponType } from "@/services/apiCakes"
 import { useAppContext } from '@/store/AppContext';
 
 export function useApplyCoupon() {
@@ -8,15 +8,15 @@ export function useApplyCoupon() {
 
   const queryClient = useQueryClient();
   const { mutate: applyCoupon, isPending } = useMutation({
-    mutationFn: (coupon) => applyCouponApi(coupon),
+    mutationFn: (coupon: CouponType) => applyCouponApi(coupon),
     mutationKey: ['coupon'],
     onSuccess: () => {
       setCoupon(false);
       setIsCouponApplicable({
-        minBillValue: undefined,
+        minBillValue: 0,
         isCouponApplicable: true,
       });
-      queryClient.invalidateQueries(['cart', 'coupon']);
+      queryClient.invalidateQueries({ queryKey: ['coupon'] });
       toast.success('Coupon applied');
     },
     onError: (err) => {

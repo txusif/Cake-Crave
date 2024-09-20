@@ -6,7 +6,7 @@ import Name from "./Name";
 import Description from "./Description";
 import Ingredients from "./Ingredients";
 import Image from "./Image";
-import MealCount from "./MealCount";
+import CakeCount, { CartDataType } from "./CakeCount";
 import LoadingScreen from "@/ui/LoadingScreen";
 import { useAppContext } from "@/store/AppContext";
 import { useCakes } from "../useCakes";
@@ -21,7 +21,13 @@ import { useCart } from "@/features/Cart/useCart";
 
 export default function CakeDetails() {
   const { cakeItems, isLoading } = useCakes();
-  const { data: cartData, isPending } = useCart();
+  const {
+    data: cartData,
+    isPending,
+  }: {
+    data: CartDataType[] | undefined;
+    isPending: boolean;
+  } = useCart();
   const { isCartLoading } = useAppContext();
   const navigate = useNavigate();
 
@@ -100,7 +106,7 @@ export default function CakeDetails() {
                 </div>
                 <Price price={item.price} />
                 <div className="flex flex-col items-start gap-4">
-                  <MealCount cartData={cartData} item={item} />
+                  <CakeCount cartData={cartData ?? []} item={item} />
                   <ButtonCart item={item} />
                 </div>
               </div>

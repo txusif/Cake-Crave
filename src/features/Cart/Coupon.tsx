@@ -16,7 +16,7 @@ export default function Coupon() {
           body={"Flat 15% discount on bill value above ₹1200"}
           calMethod={"percentage"}
           couponValue={15}
-          minBillValue={"1200"}
+          minBillValue={1200}
         />
         <CouponCard
           title={"Get flat ₹100 OFF"}
@@ -29,7 +29,7 @@ export default function Coupon() {
           title={"Get 10% OFF"}
           body={"Flat 10% discount on orders above ₹400"}
           calMethod={"percentage"}
-          couponValue={8}
+          couponValue={10}
           minBillValue={400}
         />
         <CouponCard

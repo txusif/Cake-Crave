@@ -8,18 +8,19 @@ import { useRemoveFromCart } from "@/features/Cart/useRemoveFromCart";
 import { useEmptyCart } from "@/features/Order/useEmptyCart";
 import { NewItemType } from "@/services/apiCakes";
 import userPlaceholder from "/assets/user-placeholder.jpg";
+import { CartDataType } from "@/features/Cakes/CakeDetails/CakeCount";
 
 interface AppContextType {
   isCartOpen: boolean;
   setIsCartOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  handleDecrease: (item: any) => void;
-  handleIncrease: (item: any) => void;
+  handleDecrease: (item: NewItemType) => void;
+  handleIncrease: (item: NewItemType) => void;
   isCartLoading: boolean;
   handleCloseCart: () => void;
   handleDelete: (id: number) => void;
-  handleAddItem: (item: any) => void;
+  handleAddItem: (item: NewItemType) => void;
   handleEmptyCart: () => void;
-  removeItem: (item: any) => void;
+  removeItem: (id: number) => void;
   isMenuOpen: boolean;
   setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
   userName: string;
@@ -33,8 +34,10 @@ interface AppContextType {
   setIsCouponApplicable: React.Dispatch<
     React.SetStateAction<{ minBillValue: number; isCouponApplicable: boolean }>
   >;
-  setCartDetails: React.Dispatch<React.SetStateAction<any>>;
-  cartDetails: any;
+  setCartDetails: React.Dispatch<
+    React.SetStateAction<{ cartItems: CartDataType[] }>
+  >;
+  cartDetails: { cartItems: CartDataType[] };
   profile: any;
   setProfile: React.Dispatch<React.SetStateAction<any>>;
   viewPortWidth: number;
@@ -62,7 +65,9 @@ export default function AppContext({
   const [isCouponApplicable, setIsCouponApplicable] = useState(() => {
     return { minBillValue: 0, isCouponApplicable: true };
   });
-  const [cartDetails, setCartDetails] = useState({});
+  const [cartDetails, setCartDetails] = useState<{ cartItems: CartDataType[] }>(
+    { cartItems: [] },
+  );
   const [profile, setProfile] = useState();
   const [viewPortWidth, setViewPortWidth] = useState(window.innerWidth);
   const { user } = useUser();

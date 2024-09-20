@@ -38,14 +38,11 @@ export default function Navbar() {
             onClick={handleSearch}
           />
 
-          <div className="relative">
+          <div className="relative cursor-pointer" onClick={handleClickCart}>
             <span className="absolute right-[-6px] top-[-4px] flex h-4 w-4 items-center justify-center rounded-full bg-DarkRed text-xs font-medium text-White sm:right-[-8px] sm:top-[-6px] sm:h-5 sm:w-5 sm:text-sm">
               {cartLength}
             </span>
-            <FiShoppingCart
-              className="cursor-pointer text-2xl text-Grey sm:text-3xl"
-              onClick={handleClickCart}
-            />
+            <FiShoppingCart className="text-2xl text-Grey sm:text-3xl" />
           </div>
         </div>
         <div className="relative self-end">

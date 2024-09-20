@@ -1,11 +1,18 @@
 import { currencyFormatter } from "@/utils/helper";
 
+type CartTotalProps = {
+  isCouponApplied: boolean;
+  discountPrice: number;
+  totalCartPrice: number;
+  updatedCartPrice: number;
+};
+
 export default function CartTotal({
   isCouponApplied,
   discountPrice,
   totalCartPrice,
   updatedCartPrice,
-}) {
+}: CartTotalProps) {
   return (
     <div className="flex w-full flex-col gap-2 rounded-md bg-LightGrey/60 p-4">
       {isCouponApplied && (

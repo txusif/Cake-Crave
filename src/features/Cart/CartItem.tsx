@@ -14,7 +14,7 @@ import { currencyFormatter } from "@/utils/helper";
 
 type AppContextType = {
   handleCheckOut: () => void;
-  handleDelete: (id: string) => void;
+  handleDelete: (id: number) => void;
   setIsCartOpen: (value: boolean) => void;
   isCouponApplicable: {
     isCouponApplicable: boolean;
@@ -24,7 +24,28 @@ type AppContextType = {
   handleEmptyCart: () => void;
 };
 
-export default function CartItems({ cartData }) {
+export type CartItemsProps = {
+  id: number;
+  ingredients: string;
+  name: string;
+  price: number;
+  quantity: number;
+  totalPrice: number;
+};
+
+type CartDetailsType = {
+  cartItems: CartItemsProps[];
+  discountPrice: number;
+  totalCartPrice: number;
+  updatedCartPrice: number;
+  isCouponApplied: boolean;
+};
+
+export default function CartItems({
+  cartData,
+}: {
+  cartData: CartItemsProps[];
+}) {
   const {
     handleCheckOut,
     handleDelete,
@@ -33,7 +54,9 @@ export default function CartItems({ cartData }) {
     setCartDetails,
     handleEmptyCart,
   }: AppContextType = useAppContext();
+
   const { data: couponData, isLoading } = useCoupon();
+
   const navigate = useNavigate();
   const { isCouponApplicable: isApplicable, minBillValue } = isCouponApplicable;
   const { isCouponApplied, couponValue, calMethod } = couponData?.[0] || [];
@@ -61,8 +84,12 @@ export default function CartItems({ cartData }) {
       }, 0);
   }
 
-  let cartDetails = {
+  let cartDetails: CartDetailsType = {
     cartItems: cartData?.map((meal) => meal),
+    discountPrice,
+    totalCartPrice,
+    updatedCartPrice,
+    isCouponApplied,
   };
 
   cartDetails = {
@@ -73,7 +100,7 @@ export default function CartItems({ cartData }) {
     isCouponApplied,
   };
 
-  function handleClickCheckOut(e) {
+  function handleClickCheckOut(e: React.MouseEvent<HTMLButtonElement>) {
     e.stopPropagation();
     handleCheckOut();
     navigate("/order");

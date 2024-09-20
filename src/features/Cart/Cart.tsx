@@ -3,7 +3,7 @@ import { useCart } from "./useCart";
 import { useAppContext } from "@/store/AppContext";
 import SmallLoader from "@/ui/SmallLoader";
 import NoData from "@/ui/NoData";
-import CartItems from "./CartItem";
+import CartItems, { CartItemsProps } from "./CartItem";
 
 export default function Cart() {
   const {
@@ -15,7 +15,11 @@ export default function Cart() {
     isCartLoading: boolean;
     handleCloseCart: () => void;
   } = useAppContext();
-  const { data: cartData } = useCart();
+  const {
+    data: cartData,
+  }: {
+    data: CartItemsProps[] | undefined;
+  } = useCart();
 
   // Sorting the array of objects based on the 'name' property
   cartData?.sort((a, b) => {
@@ -52,7 +56,7 @@ export default function Cart() {
           {(cartData?.length ?? 0) < 1 ? (
             <NoData />
           ) : (
-            <CartItems cartData={cartData} />
+            <CartItems cartData={cartData ?? []} />
           )}
         </div>
       </div>

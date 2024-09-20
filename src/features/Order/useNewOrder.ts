@@ -3,6 +3,7 @@ import { newOrder as newOrderApi } from "@/services/apiOrders"
 import { toast } from 'sonner';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useEmptyCart } from './useEmptyCart';
+import { CartDataType } from '../Cakes/CakeDetails/CakeCount';
 
 export function useNewOrder() {
     const { emptyCart } = useEmptyCart();
@@ -14,7 +15,7 @@ export function useNewOrder() {
             fullName: string;
             phoneNumber: string;
             address: string;
-            cartDetails: any;
+            cartDetails: { cartItems: CartDataType[] };
         }) => newOrderApi(orderDetails),
         mutationKey: ['orderDetails'],
         onSuccess: (data) => {

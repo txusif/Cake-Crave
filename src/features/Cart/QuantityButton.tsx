@@ -1,15 +1,16 @@
+import { NewItemType } from "@/services/apiCakes";
 import { useAppContext } from "@/store/AppContext";
 import { useCouponRemover } from "@/utils/useCouponRemover";
 
-export default function QuantityButton({ item }) {
+export default function QuantityButton({ item }: { item: NewItemType }) {
   const { handleDecrease, handleIncrease, isCartLoading } = useAppContext();
   useCouponRemover();
 
-  function handleClickDec(item) {
+  function handleClickDec(item: NewItemType) {
     handleDecrease(item);
   }
 
-  function handleClickInc(item) {
+  function handleClickInc(item: NewItemType) {
     handleIncrease(item);
   }
 

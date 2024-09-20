@@ -3,16 +3,29 @@ import { emptyCart as emptyCartApi } from "@/services/apiCakes";
 import { useRemoveCoupon } from '../Cart/useRemoveCoupon';
 import { useCoupon } from '../Cart/useCoupon';
 
+
+type CouponType = {
+    calMethod: string;
+    couponValue: number;
+    created_at: string;
+    id: number;
+    isCouponApplied: boolean;
+    minBillValue: number;
+}
+
 export function useEmptyCart() {
     const queryClient = useQueryClient();
-    const { data } = useCoupon();
+    const { data }: {
+        data: CouponType[] | undefined;
+    } = useCoupon();
+
     const { removeCoupon } = useRemoveCoupon();
     const { mutate: emptyCart, isPending } = useMutation({
         mutationFn: emptyCartApi,
         mutationKey: ['cart'],
         onSuccess: () => {
-            queryClient.invalidateQueries(['cart', 'coupon']);
-            if (data.isCouponApplied) removeCoupon();
+            if (data && data.some(coupon => coupon.isCouponApplied)) removeCoupon();
+            queryClient.invalidateQueries({ queryKey: ['cart'] });
         },
         onError: (err) => {
             console.log(err);

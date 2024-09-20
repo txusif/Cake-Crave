@@ -11,6 +11,7 @@ import Button from "@/ui/Button";
 import BackgroundCover from "@/ui/BackgroundCover";
 import orderFormBanner from "/assets/banners/orderForm-banner.png";
 import { useUser } from "../Authentication/useUser";
+import { CartDataType } from "../Cakes/CakeDetails/CakeCount";
 
 export default function OrderForm() {
   const { user } = useUser();
@@ -19,7 +20,7 @@ export default function OrderForm() {
     cartDetails,
     setIsCartOpen,
   }: {
-    cartDetails: any;
+    cartDetails: { cartItems: CartDataType[] };
     setIsCartOpen: React.Dispatch<React.SetStateAction<boolean>>;
   } = useAppContext();
 

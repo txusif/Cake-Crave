@@ -4,7 +4,7 @@ import { useRemoveCoupon } from "./useRemoveCoupon";
 export default function CouponDiscount() {
   const { data, isLoading } = useCoupon();
   const { removeCoupon, isPending } = useRemoveCoupon();
-  const calMethod = data[0]?.calMethod === "percentage" ? "%" : "";
+  const calMethod = data?.[0]?.calMethod === "percentage" ? "%" : "";
 
   function handleClickRemove() {
     removeCoupon();
@@ -16,11 +16,13 @@ export default function CouponDiscount() {
       onClick={(e) => e.stopPropagation()}
     >
       <div className="flex flex-col gap-1">
-        {data[0]?.calMethod === "percentage" ? (
-          <h3 className="text-[14px] font-semibold text-Green">{`${data[0]?.couponValue}${calMethod} OFF`}</h3>
-        ) : (
-          <h3 className="text-[14px] font-semibold text-Green">{`₹${data[0]?.couponValue} OFF`}</h3>
-        )}
+        {data && data[0] ? (
+          data[0].calMethod === "percentage" ? (
+            <h3 className="text-[14px] font-semibold text-Green">{`${data[0].couponValue}${calMethod} OFF`}</h3>
+          ) : (
+            <h3 className="text-[14px] font-semibold text-Green">{`₹${data[0].couponValue} OFF`}</h3>
+          )
+        ) : null}
         <p className="text-[12px] font-normal text-Grey">
           Offer applied on the bill
         </p>
