@@ -1,3 +1,4 @@
+import { CakeType } from "@/services/apiCakes";
 import ButtonCart from "@/ui/ButtonCart";
 import Rating from "@/ui/Rating";
 import { currencyFormatter } from "@/utils/helper";
@@ -5,7 +6,11 @@ import { LiaRupeeSignSolid } from "react-icons/lia";
 
 import { useNavigate, useSearchParams } from "react-router-dom";
 
-export default function SearchItem({ searchResults }) {
+export default function SearchItem({
+  searchResults,
+}: {
+  searchResults: CakeType[];
+}) {
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
 
@@ -21,15 +26,18 @@ export default function SearchItem({ searchResults }) {
           <div
             key={item.name}
             className="relative flex w-[160px] cursor-pointer flex-col rounded-xl border-[5px] border-White bg-White shadow-xl outline outline-2 outline-LightGrey transition duration-300 hover:scale-105 hover:shadow-2xl sm:w-[180px]"
-            onClick={() => handleClickMeal(item.id)}
+            onClick={() => handleClickMeal(String(item.id))}
           >
             <div className="h-[135px] w-auto overflow-hidden rounded-xl">
               <div
-                className={`absolute left-[-9px] top-3 ml-[-1px] rounded-r-md bg-white p-1 px-2 pt-[5px] text-[10px] font-bold uppercase tracking-wide shadow-md ${item.type === "veg" ? "text-Green" : "text-Red"} `}
+                className={`absolute left-[-9px] top-3 ml-[-1px] rounded-r-md bg-white p-1 px-2 pt-[5px] text-[10px] font-bold uppercase tracking-wide shadow-md ${item.type === "vegan" ? "text-Green" : "text-Red"} `}
               >
                 {item.type}
               </div>
-              <img src={item.image} className="h-full w-full object-cover" />
+              <img
+                src={item.images[0]}
+                className="h-full w-full object-cover"
+              />
             </div>
             <div className="flex flex-auto flex-grow flex-col gap-1 p-2">
               <p className="text-xs font-semibold text-DarkGrey">{item.name}</p>
@@ -43,7 +51,7 @@ export default function SearchItem({ searchResults }) {
                   {currencyFormatter(Math.ceil(item.price))}
                 </p>
               </div>
-              <ButtonCart item={item} className="items-end" />
+              <ButtonCart item={item} />
             </div>
           </div>
         );

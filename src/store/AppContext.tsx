@@ -7,7 +7,7 @@ import { useIncreaseCount } from "@/features/Cart/useIncreaseCount";
 import { useRemoveFromCart } from "@/features/Cart/useRemoveFromCart";
 import { useEmptyCart } from "@/features/Order/useEmptyCart";
 import { NewItemType } from "@/services/apiCakes";
-import { placeHolderImage } from "@/utils/GlobalConst";
+import userPlaceholder from "/assets/user-placeholder.jpg";
 
 interface AppContextType {
   isCartOpen: boolean;
@@ -57,7 +57,7 @@ export default function AppContext({
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [userName, setUserName] = useState("");
-  const [avatar, setAvatar] = useState(placeHolderImage);
+  const [avatar, setAvatar] = useState(userPlaceholder);
   const [isCoupon, setCoupon] = useState(false);
   const [isCouponApplicable, setIsCouponApplicable] = useState(() => {
     return { minBillValue: 0, isCouponApplicable: true };
@@ -66,7 +66,7 @@ export default function AppContext({
   const [profile, setProfile] = useState();
   const [viewPortWidth, setViewPortWidth] = useState(window.innerWidth);
   const { user } = useUser();
-  const isTestId = user?.id === "xyz";
+  const isTestId = user?.id === "9cc0f7de-6741-497e-a88d-379d496965b1";
   const isCartLoading =
     isDecreasing ||
     isIncreasing ||

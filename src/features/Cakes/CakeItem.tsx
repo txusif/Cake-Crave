@@ -32,8 +32,9 @@ export default function CakeItem() {
               >
                 {item.type}
               </div>
+
               <img
-                src={item.images[0] || "/assets/dummy-cake.png"}
+                src={item?.images[0]}
                 alt={item.name}
                 className="h-full w-full object-cover"
               />
@@ -42,7 +43,7 @@ export default function CakeItem() {
               <p className="text-xs font-semibold text-DarkGrey">{item.name}</p>
               <div className="flex gap-1">
                 <Rating rating={Math.floor(item.rating)} />
-                <p className="text-xs">{Math.floor(item.rating)}</p>
+                <p className="text-xs">{item.rating}</p>
               </div>
               <div className="mb-auto flex items-center text-xl">
                 <LiaRupeeSignSolid className="mt-[-4px] stroke-[0.8] text-Yellow" />

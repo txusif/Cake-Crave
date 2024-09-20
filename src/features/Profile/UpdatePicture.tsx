@@ -2,7 +2,7 @@ import { FaEdit } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { useAppContext } from "@/store/AppContext";
 import Button from "@/ui/Button";
-import { placeHolderImage } from "@/utils/GlobalConst";
+import userPlaceholder from "/assets/user-placeholder.jpg";
 import { useUpdatePicture } from "./useUpdatePicture";
 import { useRemovePicture } from "./useRemovePicture";
 
@@ -72,7 +72,7 @@ export default function UpdatePicture({ isTestId }: { isTestId: boolean }) {
           <Button
             onClick={() => handleRemoveImage}
             type={"remove"}
-            disabled={isRemoving || avatar === placeHolderImage || isTestId}
+            disabled={isRemoving || avatar === userPlaceholder || isTestId}
             isPending={isRemoving}
           >
             Remove

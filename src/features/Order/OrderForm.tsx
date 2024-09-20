@@ -9,7 +9,7 @@ import FormMessage from "@/ui/FormMessage";
 import Input from "@/ui/Input";
 import Button from "@/ui/Button";
 import BackgroundCover from "@/ui/BackgroundCover";
-import { loginBanner01 } from "@/utils/GlobalConst";
+import orderFormBanner from "/assets/banners/orderForm-banner.png";
 import { useUser } from "../Authentication/useUser";
 
 export default function OrderForm() {
@@ -121,7 +121,7 @@ export default function OrderForm() {
             </div>
           </form>
         </div>
-        <BackgroundCover loginBanner01={loginBanner01} />
+        <BackgroundCover coverBanner={orderFormBanner} />
       </div>
     </>
   );

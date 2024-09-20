@@ -7,8 +7,8 @@ import Input from "@/ui/Input";
 import Button from "@/ui/Button";
 import SmallLoader from "@/ui/SmallLoader";
 import FormLinks from "@/ui/FormLinks";
-import { loginBanner01 } from "@/utils/GlobalConst";
 import FormCover from "@/ui/FormCover";
+import resetPasswordBanner from "/assets/banners/resetPassword-banner.png";
 import BackgroundCover from "@/ui/BackgroundCover";
 
 export default function ResetPassword() {
@@ -64,11 +64,11 @@ export default function ResetPassword() {
               </div>
               <FormLinks form="reset" />
             </div>
-            <FormCover loginBanner01={loginBanner01} />
+            <FormCover bannerImage={resetPasswordBanner} />
           </div>
         </div>
       </Container>
-      <BackgroundCover loginBanner01={loginBanner01} />
+      <BackgroundCover coverBanner={resetPasswordBanner} />
     </>
   );
 }

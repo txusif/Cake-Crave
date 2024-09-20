@@ -7,7 +7,7 @@ import FormMessage from "@/ui/FormMessage";
 import Input from "@/ui/Input";
 import Logo from "@/ui/Logo";
 import SmallLoader from "@/ui/SmallLoader";
-import { loginBanner01 } from "@/utils/GlobalConst";
+import signupBanner from "/assets/banners/signup-banner.png";
 import { useForm } from "react-hook-form";
 import useSignUp from "./useSignUp";
 
@@ -115,11 +115,11 @@ export default function SignUp() {
               </div>
               <FormLinks form="signup" />
             </div>
-            <FormCover loginBanner01={loginBanner01} />
+            <FormCover bannerImage={signupBanner} />
           </div>
         </div>
       </Container>
-      <BackgroundCover loginBanner01={loginBanner01} />
+      <BackgroundCover coverBanner={signupBanner} />
     </>
   );
 }

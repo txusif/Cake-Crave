@@ -1,5 +1,5 @@
 import { useAppContext } from '@/store/AppContext';
-import { placeHolderImage } from '@/utils/GlobalConst';
+import userPlaceholder from "/assets/user-placeholder.jpg";
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { removePicture as removePictureApi } from '@/services/apiAuth';
 
@@ -14,7 +14,7 @@ export function useRemovePicture() {
     const { mutate: removePicture, isPending } = useMutation({
         mutationFn: removePictureApi,
         onSuccess: ({ user }) => {
-            setAvatar(placeHolderImage);
+            setAvatar(userPlaceholder);
             queryClient.setQueryData(['user'], user);
             toast.success('Profile picture removed');
         },

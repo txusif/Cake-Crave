@@ -12,7 +12,7 @@ export default function Cakes() {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2 sm:gap-3">
           <h1 className="text-xl font-bold text-DarkGrey sm:text-2xl">
-            Popular Dishes
+            Popular Cakes
           </h1>
           {isLoadingCakes && <SmallLoader showLoading={false} />}
         </div>

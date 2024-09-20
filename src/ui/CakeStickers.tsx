@@ -34,7 +34,7 @@ export default function CakeStickers({
       <span
         className={` ${(type === "star" && "text-base text-Yellow") || (type === "non-veg" && "text-Red") || (type === "veg" && "text-Green") || (type === "cuisine" && "font-light text-Grey")} mt-1 text-sm font-semibold capitalize text-Grey`}
       >
-        {type === "star" && Math.floor(rating ?? 0)}
+        {type === "star" && (rating ?? 0)}
         {title}
       </span>
     </div>

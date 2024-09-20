@@ -7,7 +7,7 @@ import FormMessage from "@/ui/FormMessage";
 import Input from "@/ui/Input";
 import Logo from "@/ui/Logo";
 import SmallLoader from "@/ui/SmallLoader";
-import { loginBanner02 } from "@/utils/GlobalConst";
+import loginBanner from "/assets/banners/login-banner.png";
 import { useForm } from "react-hook-form";
 import { LoginDataType, useLogin } from "./useLogin";
 
@@ -92,11 +92,11 @@ const Login = () => {
               </div>
               <FormLinks form="login" />
             </div>
-            <FormCover loginBanner01={loginBanner02} />
+            <FormCover bannerImage={loginBanner} />
           </div>
         </div>
       </Container>
-      <BackgroundCover loginBanner01={loginBanner02} />
+      <BackgroundCover coverBanner={loginBanner} />
     </>
   );
 };
