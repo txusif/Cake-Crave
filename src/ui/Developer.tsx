@@ -16,7 +16,7 @@ export default function Developer() {
             </Link>
           </span>
         </div>
-        <span className="text-Grey">Last Updated | 19 09 2024</span>
+        <span className="text-Grey">Last Updated | 20 09 2024</span>
       </div>
     </div>
   );

@@ -50,7 +50,7 @@ export default function CakeDetails() {
             <div className="flex flex-col items-center justify-center gap-6 lg:flex-row lg:gap-12">
               <Image
                 size="w-[300px] lg:max-w-[40%]"
-                image={item.images[0]}
+                images={item.images}
                 name={item.name}
               />
               <div className="flex flex-col gap-4 md:gap-6">
