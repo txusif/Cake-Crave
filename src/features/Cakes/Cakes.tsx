@@ -17,7 +17,7 @@ export default function Cakes() {
           {isLoadingCakes && <SmallLoader showLoading={false} />}
         </div>
         <p className="text-xs font-medium text-Grey sm:text-sm">
-          Meals found :{" "}
+          Cakes found :{" "}
           <span className="text-lg font-semibold text-Green sm:text-xl">
             {cakeLength < 10 ? `0${cakeLength}` : cakeLength}
           </span>

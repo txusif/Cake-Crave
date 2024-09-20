@@ -28,8 +28,8 @@ export default function SearchInput() {
   }
 
   let searchResults: CakeType[] = [];
-  searchResults = (cakeItems ?? []).filter((meal) =>
-    meal.name
+  searchResults = (cakeItems ?? []).filter((cake) =>
+    cake.name
       .toLowerCase()
       .replace(" ", "")
       .includes(input.toLowerCase().replace(" ", "")),

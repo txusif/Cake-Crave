@@ -14,7 +14,7 @@ export default function SearchItem({
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
 
-  function handleClickMeal(id: string) {
+  function handleClickCake(id: string) {
     searchParams.set("cakeId", id);
     setSearchParams(searchParams);
     navigate(`/cakes/${id}`);
@@ -26,7 +26,7 @@ export default function SearchItem({
           <div
             key={item.name}
             className="relative flex w-[160px] cursor-pointer flex-col rounded-xl border-[5px] border-White bg-White shadow-xl outline outline-2 outline-LightGrey transition duration-300 hover:scale-105 hover:shadow-2xl sm:w-[180px]"
-            onClick={() => handleClickMeal(String(item.id))}
+            onClick={() => handleClickCake(String(item.id))}
           >
             <div className="h-[135px] w-auto overflow-hidden rounded-xl">
               <div

@@ -38,7 +38,7 @@ export default function CakeCount({
     totalPrice = 0,
   } = cakeToUpdate || {};
 
-  const updatedMeal = {
+  const updatedCake = {
     id,
     name,
     price,
@@ -51,7 +51,7 @@ export default function CakeCount({
     if (quantity < 1) {
       handleDelete(item.id);
     } else {
-      handleDecrease(updatedMeal);
+      handleDecrease(updatedCake);
     }
   }
   function handleIncreaseCount() {
@@ -68,7 +68,7 @@ export default function CakeCount({
       };
       handleAddItem(newItem);
     } else {
-      handleIncrease(updatedMeal);
+      handleIncrease(updatedCake);
     }
   }
 

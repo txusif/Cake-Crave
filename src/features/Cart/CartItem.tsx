@@ -85,7 +85,7 @@ export default function CartItems({
   }
 
   let cartDetails: CartDetailsType = {
-    cartItems: cartData?.map((meal) => meal),
+    cartItems: cartData?.map((cake) => cake),
     discountPrice,
     totalCartPrice,
     updatedCartPrice,

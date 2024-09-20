@@ -70,7 +70,7 @@ export default function OrderForm() {
         <div className="flex w-screen flex-col gap-4 overflow-auto rounded-xl bg-White p-8 shadow-lg outline outline-1 outline-Grey/40 sm:h-auto sm:w-[570px] sm:p-10 md:p-12">
           <FormMessage
             title={"Place your order"}
-            message={"Only one step away to enjoy the tasty meal..."}
+            message={"Only one step away to enjoy the tasty cake..."}
           />
           <form
             onSubmit={handleSubmit(onSubmit)}
