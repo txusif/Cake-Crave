@@ -12,7 +12,10 @@ import { useAppContext } from "@/store/AppContext";
 import { useCakes } from "../useCakes";
 import SmallLoader from "@/ui/SmallLoader";
 import CakeStickers from "@/ui/CakeStickers";
-import { cuisine, nonVeg, star, veg } from "@/utils/GlobalConst";
+import ratingStar from "/assets/ratingStar.png";
+import eggless from "/assets/eggless.png";
+import vegan from "/assets/vegan.png";
+import cuisine from "/assets/cuisine.png";
 import ButtonCart from "@/ui/ButtonCart";
 import { useCart } from "@/features/Cart/useCart";
 
@@ -57,9 +60,9 @@ export default function CakeDetails() {
                   {item.type === "vegan" ? (
                     <CakeStickers
                       title={item.type}
-                      image={veg}
+                      image={vegan}
                       alt={item.type}
-                      type={"veg"}
+                      type={"vegan"}
                       padding="p-[6px] md:p-[8px]"
                       width="w-[30px] md:w-[40px]"
                       height="h-[30px] md:h-[40px]"
@@ -67,9 +70,9 @@ export default function CakeDetails() {
                   ) : (
                     <CakeStickers
                       title={item.type}
-                      image={nonVeg}
+                      image={eggless}
                       alt={item.type}
-                      type={"non-veg"}
+                      type={"eggless"}
                       padding="p-[6px] md:p-[8px]"
                       width="w-[30px] md:w-[40px]"
                       height="h-[30px] md:h-[40px]"
@@ -85,7 +88,7 @@ export default function CakeDetails() {
                     height="h-[30px] md:h-[40px]"
                   />
                   <CakeStickers
-                    image={star}
+                    image={ratingStar}
                     alt={String(item.rating)}
                     rating={item.rating}
                     type={"star"}

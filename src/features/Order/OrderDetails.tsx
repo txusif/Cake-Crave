@@ -1,10 +1,10 @@
 import { useParams } from "react-router-dom";
 
-import Order from "./Order";
 import LoadingScreen from "@/ui/LoadingScreen";
 import CusDetails from "./CusDetails";
-import { orderPlaced } from "@/utils/GlobalConst";
+import Order from "./Order";
 import { useGetOrder } from "./useGetOrder";
+import orderPlaced from "/assets/orderPlaced.png";
 
 export default function OrderDetails() {
   const { orderId } = useParams();

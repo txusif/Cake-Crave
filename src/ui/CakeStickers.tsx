@@ -32,7 +32,7 @@ export default function CakeStickers({
       </div>
       {type === "star" && <Rating rating={Math.floor(rating ?? 0)} size="lg" />}
       <span
-        className={` ${(type === "star" && "text-base text-Yellow") || (type === "non-veg" && "text-Red") || (type === "veg" && "text-Green") || (type === "cuisine" && "font-light text-Grey")} mt-1 text-sm font-semibold capitalize text-Grey`}
+        className={` ${(type === "star" && "text-base text-Yellow") || (type === "eggless" && "text-Red") || (type === "vegan" && "text-Green") || (type === "cuisine" && "font-light text-Grey")} mt-1 text-sm font-semibold capitalize text-Grey`}
       >
         {type === "star" && (rating ?? 0)}
         {title}
