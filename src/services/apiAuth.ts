@@ -71,7 +71,6 @@ export async function resetPassword(email: string) {
 }
 
 export async function updatePassword(newPassword: string) {
-    console.log(newPassword);
     await supabase.auth.updateUser({ password: newPassword });
 }
 

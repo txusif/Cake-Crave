@@ -10,8 +10,6 @@ type OrderDetailsType = {
 }
 
 export async function newOrder(orderDetails: OrderDetailsType) {
-    console.log(orderDetails);
-
     const { data, error } = await supabase
         .from('orderDetails')
         .upsert([orderDetails])
